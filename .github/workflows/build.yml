@@ -1,0 +1,46 @@
+name: build
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ "v*" ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  jar:
+    name: Build jar (JDK ${{ matrix.java }})
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [ "17", "21" ]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+
+      - name: Show version
+        shell: cmd
+        run: type VERSION
+
+      - name: Build
+        shell: cmd
+        run: build.bat
+
+      - name: Verify jar contents
+        shell: cmd
+        run: |
+          jar tf dist\chingtsi-waf.jar | findstr /c:"com/chingtsi/waf/WafMain.class" || exit /b 1
+          jar tf dist\chingtsi-waf.jar | findstr /c:"com/chingtsi/waf/ui/DashboardMain.class" || exit /b 1
+
+      - name: Upload jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: chingtsi-waf-jar-jdk${{ matrix.java }}
+          path: dist/chingtsi-waf.jar
+          if-no-files-found: error
