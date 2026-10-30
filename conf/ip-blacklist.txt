@@ -1,0 +1,10 @@
+# Chingtsi WAF - IP 黑名单
+# Copyright (c) 2026 Chingtsi Studio. All rights reserved.
+#
+# 每行一个，支持单个 IP 与 CIDR 网段，# 之后为注释。
+# 命中黑名单的来源直接返回 403，并写入日志，请求不会到达后端。
+# 注意：不要在此处填写 Cloudflare 的节点 IP，否则会误杀全部访客。
+
+# 示例（按需取消注释并替换为真实地址）
+# 203.0.113.45
+# 198.51.100.0/24
