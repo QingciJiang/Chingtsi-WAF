@@ -1,4 +1,5 @@
 # Chingtsi WAF
+[English](README.en.md) | 简体中文
 
 **轻量级反向代理型 Web 应用防火墙 · 零第三方运行时依赖 · Windows / IIS 友好**
 
