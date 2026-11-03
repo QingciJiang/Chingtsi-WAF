@@ -1,0 +1,9 @@
+# Chingtsi WAF - IP 白名单
+# Copyright (c) 2026 Chingtsi Studio. All rights reserved.
+#
+# 每行一个，支持单个 IP 与 CIDR 网段，# 之后为注释。
+# 白名单内的来源地址跳过全部检测（规则、限流、黑白名单），直接代理。
+# 请只放你自己的运维出口 IP，切勿加入 0.0.0.0/0。
+
+127.0.0.1
+::1

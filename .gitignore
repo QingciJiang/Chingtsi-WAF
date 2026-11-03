@@ -1,0 +1,35 @@
+# ---- build output ----
+build/
+dist/
+/chingtsi-waf.jar
+*.class
+
+# ---- third-party binaries: keep FlatLaf, ignore everything else ----
+*.jar
+!lib/flatlaf.jar
+
+# ---- ip2region database (8 MB binary, download separately) ----
+data/*.db
+
+# ---- runtime data ----
+logs/
+*.log
+
+# ---- IDE / OS ----
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+out/
+bin/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- installer artefacts ----
+installer/Output/
+*.exe
